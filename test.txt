@@ -3,4 +3,5 @@ pip install django djangorestframework
 django-admin startproject portfolio_backend
 npm install axios
 npm install react-router-dom
+npm install react-bootstrap bootstrap
 
