@@ -1,3 +1,5 @@
 pip install django
 pip install django djangorestframework
 django-admin startproject portfolio_backend
+npm install axios
+
