@@ -1,46 +1,61 @@
-import { Navbar, Nav, NavDropdown, Container, Button } from "react-bootstrap"
+import React from "react"
 import { Link } from "react-router-dom"
 
-const NavBar = () => {
+const Navbar = () => {
 	return (
-		<Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-			<Container>
-				<Navbar.Brand as={Link} to="/">
-					My Portfolio
-				</Navbar.Brand>
-				<Navbar.Toggle aria-controls="navbar-nav" />
-				<Navbar.Collapse id="navbar-nav">
-					<Nav className="ml-auto">
-						<Nav.Link as={Link} to="/">
-							Home
-						</Nav.Link>
-						<Nav.Link as={Link} to="/about">
-							About
-						</Nav.Link>
-						<Nav.Link as={Link} to="/projects">
-							Projects
-						</Nav.Link>
-						<Nav.Link as={Link} to="/contact">
-							Contact
-						</Nav.Link>
-
-						<NavDropdown title="More" id="navbar-dropdown">
-							<NavDropdown.Item as={Link} to="/blog">
-								Blog
-							</NavDropdown.Item>
-							<NavDropdown.Item as={Link} to="/resume">
-								Resume
-							</NavDropdown.Item>
-						</NavDropdown>
-
-						<Nav.Link href="https://github.com/PeterOsoo" target="_blank">
-							<Button variant="outline-light">GitHub</Button>
-						</Nav.Link>
-					</Nav>
-				</Navbar.Collapse>
-			</Container>
-		</Navbar>
+		<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div className="container">
+				<Link className="navbar-brand" to="/">
+					Rateng D.
+				</Link>
+				<button
+					className="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarNav"
+					aria-controls="navbarNav"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span className="navbar-toggler-icon"></span>
+				</button>
+				<div className="collapse navbar-collapse" id="navbarNav">
+					<ul className="navbar-nav ms-auto">
+						<li className="nav-item">
+							<Link className="nav-link" to="/">
+								Home
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link className="nav-link" to="/about">
+								About
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link className="nav-link" to="/experiences">
+								Experiences
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link className="nav-link" to="/skills">
+								Skills
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link className="nav-link" to="/projects">
+								Projects
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link className="nav-link" to="/contact">
+								Contact
+							</Link>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 	)
 }
 
-export default NavBar
+export default Navbar
