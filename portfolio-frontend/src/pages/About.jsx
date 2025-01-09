@@ -13,7 +13,13 @@ const About = () => {
 			.catch(error => console.error(error))
 	}, [])
 
-	if (!aboutData) return <div>Loading...</div>
+	if (!aboutData)
+		return (
+			<div>
+				<h2>About Me</h2>
+				<p>Loading...</p>{" "}
+			</div>
+		)
 
 	return (
 		<section>
