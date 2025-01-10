@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react"
-import axios from "axios"
+import { useEffect, useState } from "react"
+import axiosInstance from "../utils/axiosInstance"
 
 const Projects = () => {
 	const [projects, setProjects] = useState([])
 
 	useEffect(() => {
-		axios
-			.get("http://127.0.0.1:8000/api/projects/")
+		axiosInstance
+			.get("projects")
 			.then(response => setProjects(response.data))
 			.catch(error => console.error("Error fetching Projects data:", error))
 	}, [])

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react"
-import axios from "axios"
+import { useEffect, useState } from "react"
+import axiosInstance from "../utils/axiosInstance"
 
 const About = () => {
 	const [aboutData, setAboutData] = useState(null)
 
 	useEffect(() => {
-		axios
-			.get("http://127.0.0.1:8000/api/about/")
+		axiosInstance
+			.get("about")
 			.then(response => setAboutData(response.data[0])) // Assuming single entry
 			.catch(error => console.error("Error fetching About data:", error))
 	}, [])
@@ -15,7 +15,8 @@ const About = () => {
 
 	return (
 		<div>
-			<h1>{aboutData.name}</h1>
+			<h1>About Me</h1>
+			<h2>{aboutData.name}</h2>
 			<p>{aboutData.bio}</p>
 			<img
 				src={aboutData.profile_image}

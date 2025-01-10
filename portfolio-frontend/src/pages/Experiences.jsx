@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
-import axios from "axios"
+import axiosInstance from "../utils/axiosInstance"
 
 const Experiences = () => {
 	const [experience, setExperience] = useState([])
 
 	useEffect(() => {
-		axios
-			.get("http://127.0.0.1:8000/api/experience/")
+		axiosInstance
+			.get("experience")
 			.then(response => setExperience(response.data))
 			.catch(error => console.error("Error fetching Experience data:", error))
 	}, [])

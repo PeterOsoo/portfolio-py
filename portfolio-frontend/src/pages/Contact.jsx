@@ -1,5 +1,5 @@
 import { useState } from "react"
-import axios from "../axios"
+import axiosInstance from "../utils/axiosInstance"
 
 const Contact = () => {
 	const [formData, setFormData] = useState({ name: "", email: "", message: "" })
@@ -16,7 +16,7 @@ const Contact = () => {
 	const handleSubmit = e => {
 		e.preventDefault()
 
-		axios
+		axiosInstance
 			.post("contact/", formData)
 			.then(response => {
 				setResponseMessage("Your message has been sent successfully!")
