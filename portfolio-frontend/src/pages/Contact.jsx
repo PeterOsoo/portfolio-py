@@ -1,68 +1,44 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axiosInstance from "../utils/axiosInstance"
 
 const Contact = () => {
-	const [formData, setFormData] = useState({ name: "", email: "", message: "" })
-	const [responseMessage, setResponseMessage] = useState("")
+	const [contact, setContact] = useState(null)
 
-	const handleChange = e => {
-		const { name, value } = e.target
-		setFormData(prevData => ({
-			...prevData,
-			[name]: value,
-		}))
-	}
-
-	const handleSubmit = e => {
-		e.preventDefault()
-
+	useEffect(() => {
+		// Fetch the contact data from API
 		axiosInstance
-			.post("contact/", formData)
+			.get("contact/") //
 			.then(response => {
-				setResponseMessage("Your message has been sent successfully!")
+				setContact(response.data[0])
+				console.log(response.data[0])
 			})
 			.catch(error => {
-				setResponseMessage("There was an error sending your message.")
+				console.error("Error fetching contact data:", error)
 			})
-	}
+	}, [])
 
 	return (
-		<section>
-			<h2>Contact</h2>
-			<form onSubmit={handleSubmit}>
+		<div>
+			{contact ? (
 				<div>
-					<label>Name:</label>
-					<input
-						type="text"
-						name="name"
-						value={formData.name}
-						onChange={handleChange}
-						required
-					/>
+					<h1>Contact</h1>
+					<p>Email: {contact.email}</p>
+					<p>Phone: {contact.phone}</p>
+					<p>
+						LinkedIn:{" "}
+						<a
+							href={contact.linkedin}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{contact.linkedin}
+						</a>
+					</p>
 				</div>
-				<div>
-					<label>Email:</label>
-					<input
-						type="email"
-						name="email"
-						value={formData.email}
-						onChange={handleChange}
-						required
-					/>
-				</div>
-				<div>
-					<label>Message:</label>
-					<textarea
-						name="message"
-						value={formData.message}
-						onChange={handleChange}
-						required
-					></textarea>
-				</div>
-				<button type="submit">Send Message</button>
-			</form>
-			{responseMessage && <p>{responseMessage}</p>}
-		</section>
+			) : (
+				<p>Loading contact data...</p>
+			)}
+		</div>
 	)
 }
 
