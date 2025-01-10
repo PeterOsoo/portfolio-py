@@ -1,9 +1,11 @@
-import NavBar from "./components/Navbar"
+import NavBar from "./components/NavBar"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Projects from "./pages/Projects"
 import Contact from "./pages/Contact"
+import Skills from "./pages/Skills"
+import Experiences from "./pages/Experiences"
 
 const App = () => {
 	return (
@@ -13,13 +15,11 @@ const App = () => {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/about" element={<About />} />
+				<Route path="/skills" element={<Skills />} />
+				<Route path="/experiences" element={<Experiences />} />
 				<Route path="/projects" element={<Projects />} />
 				<Route path="/contact" element={<Contact />} />
 			</Routes>
-
-			{/* <footer>
-				<p>&copy; 2025 My Portfolio. All rights reserved.</p>
-			</footer> */}
 		</Router>
 	)
 }
