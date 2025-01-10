@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react"
-import axios from "axios"
+import { useState, useEffect } from "react"
+import axiosInstance from "../utils/axiosInstance"
 
 const Skills = () => {
 	const [skills, setSkills] = useState([])
 
 	useEffect(() => {
-		axios
-			.get("http://127.0.0.1:8000/api/skills/")
+		axiosInstance
+			.get("skills/") // No need to include the full URL
 			.then(response => setSkills(response.data))
-			.catch(error => console.error("Error fetching Skills data:", error))
+			.catch(error => console.error("Error fetching skills:", error))
 	}, [])
 
 	return (
@@ -16,9 +16,7 @@ const Skills = () => {
 			<h1>Skills</h1>
 			<ul>
 				{skills.map(skill => (
-					<li key={skill.id}>
-						{skill.name} - {skill.level}
-					</li>
+					<li key={skill.id}>{skill.name}</li>
 				))}
 			</ul>
 		</div>
