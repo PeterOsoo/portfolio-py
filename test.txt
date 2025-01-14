@@ -8,3 +8,5 @@ npm install react-bootstrap bootstrap
 
 pip install django-cors-headers
 
+pip freeze > requirements.txt
+pip install dj-database-url
