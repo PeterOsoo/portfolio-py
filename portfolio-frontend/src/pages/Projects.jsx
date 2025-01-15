@@ -12,17 +12,33 @@ const Projects = () => {
 	}, [])
 
 	return (
-		<div>
-			<h1>Projects</h1>
-			{projects.map(project => (
-				<div key={project.id}>
-					<h2>{project.title}</h2>
-					<p>{project.description}</p>
-					<a href={project.link} target="_blank" rel="noopener noreferrer">
-						View Project
-					</a>
-				</div>
-			))}
+		<div className="container my-5">
+			<h1 className="text-center mb-4">Projects</h1>
+			<div className="row">
+				{projects.map(project => (
+					<div key={project.id} className="col-md-4 mb-4">
+						<div className="card h-100">
+							<div className="card-body">
+								<h5 className="card-title">{project.title}</h5>
+								<p className="card-text">
+									{project.description ||
+										"No description available for this project."}
+								</p>
+								{project.link && (
+									<a
+										href={project.link}
+										className="btn btn-primary"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										View Project
+									</a>
+								)}
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
 		</div>
 	)
 }
