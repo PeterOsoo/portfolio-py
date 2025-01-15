@@ -27,7 +27,7 @@ const Projects = () => {
 								{project.link && (
 									<a
 										href={project.link}
-										className="btn btn-primary"
+										className="btn btn-secondary"
 										target="_blank"
 										rel="noopener noreferrer"
 									>
