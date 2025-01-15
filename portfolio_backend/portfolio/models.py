@@ -27,6 +27,8 @@ class Experience(models.Model):
     description = models.TextField()
     start_date = models.DateField()
     end_date = models.DateField(null=True, blank=True)
+    company_website = models.URLField(null=True, blank=True)
+    project_link = models.URLField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.role} at {self.company}"
