@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
+import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,8 +27,9 @@ SECRET_KEY = 'django-insecure-!66tzmb8y8-83ni+u*bw!@7^w!a5_bkv)1!)$hjl#o&n$gf9z^
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False  # Disable debug mode in production
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*", 'portfolio_backend.herokuapp.com']
 
 
 # Application definition
@@ -77,12 +81,21 @@ WSGI_APPLICATION = 'portfolio_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Use Heroku's PostgreSQL database in production
+# DATABASES['default'] = dj_database_url.config(
+#     # Fallback to SQLite for local dev
+#     default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+#     conn_max_age=600,
+#     ssl_require=True
+# )
 
 
 # Password validation
@@ -127,3 +140,11 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+
+# For static files in production
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
