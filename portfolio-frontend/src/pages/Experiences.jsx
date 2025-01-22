@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import axiosInstance from "../utils/axiosInstance"
+import Loading from "../components/Loading"
 
 const Experiences = () => {
 	const [experience, setExperience] = useState([])
@@ -20,7 +21,7 @@ const Experiences = () => {
 	}
 
 	if (!experience.length) {
-		return <p>Loading experiences...</p>
+		return <Loading />
 	}
 
 	return (

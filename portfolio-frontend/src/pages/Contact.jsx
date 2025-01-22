@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
 import axiosInstance from "../utils/axiosInstance"
+import Loading from "../components/Loading" // Import the Loading component
 
 const Contact = () => {
 	const [contact, setContact] = useState(null)
+	const [loading, setLoading] = useState(true) // Add loading state
 
 	useEffect(() => {
 		// Fetch the contact data from API
@@ -10,16 +12,20 @@ const Contact = () => {
 			.get("contact/") // Adjust the endpoint as needed
 			.then(response => {
 				setContact(response.data[0])
-				console.log(response.data[0])
+				setLoading(false) // Set loading to false after data is fetched
 			})
 			.catch(error => {
 				console.error("Error fetching contact data:", error)
+				setLoading(false) // Set loading to false if there's an error
 			})
 	}, [])
 
 	return (
 		<div className="d-flex justify-content-center align-items-center vh-100">
-			{contact ? (
+			{/* Show loading spinner while data is being fetched */}
+			{loading ? (
+				<Loading /> // Display the Loading component
+			) : (
 				<div className="jumbotron p-5 my-5 text-center">
 					<h1 className="display-4">Contact Me</h1>
 					<p className="lead">
@@ -40,8 +46,6 @@ const Contact = () => {
 						</a>
 					</p>
 				</div>
-			) : (
-				<p>Loading contact data...</p>
 			)}
 		</div>
 	)

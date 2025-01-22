@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import axiosInstance from "../utils/axiosInstance"
+import Loading from "../components/Loading"
 
 const About = () => {
 	const [aboutData, setAboutData] = useState(null)
@@ -11,7 +12,7 @@ const About = () => {
 			.catch(error => console.error("Error fetching About data:", error))
 	}, [])
 
-	if (!aboutData) return <p>Loading...</p>
+	if (!aboutData) return <Loading />
 
 	return (
 		<div
