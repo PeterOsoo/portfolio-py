@@ -10,3 +10,8 @@ pip install django-cors-headers
 
 pip freeze > requirements.txt
 pip install dj-database-url
+
+pip install gunicorn psycopg2-binary dj-database-url whitenoise
+
+
+pip install python-decouple
