@@ -15,3 +15,14 @@ pip install gunicorn psycopg2-binary dj-database-url whitenoise
 
 
 pip install python-decouple
+
+
+git add .
+git commit -m "Prepare for Heroku deployment"
+git push heroku main
+
+
+heroku git:remote -a portfolio-po
+
+
+git push heroku main
