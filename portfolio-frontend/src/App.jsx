@@ -10,6 +10,7 @@ import Experiences from "./pages/Experiences"
 const App = () => {
 	return (
 		<Router>
+			{/* Update Navbar  */}
 			<NavBar />
 
 			<Routes>
