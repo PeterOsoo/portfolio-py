@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import NavBar from "./components/NavBar.jsx"
+import Header from "./components/Header.jsx"
 
 import Home from "./pages/Home"
 import About from "./pages/About"
@@ -11,8 +11,8 @@ import Experiences from "./pages/Experiences"
 const App = () => {
 	return (
 		<Router>
-			{/* Update Navbar  */}
-			<NavBar />
+			{/* Update Header  */}
+			<Header />
 
 			<Routes>
 				<Route path="/" element={<Home />} />

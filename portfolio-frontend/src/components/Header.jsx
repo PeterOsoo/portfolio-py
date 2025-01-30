@@ -1,7 +1,7 @@
 import "../styles/navbar.css"
 import { Link } from "react-router-dom"
 
-const NavBar = () => {
+const Header = () => {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 			<div className="container">
@@ -58,4 +58,4 @@ const NavBar = () => {
 	)
 }
 
-export default NavBar
+export default Header
