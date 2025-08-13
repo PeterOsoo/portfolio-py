@@ -16,6 +16,7 @@ pip install gunicorn psycopg2-binary dj-database-url whitenoise
 
 pip install python-decouple
 
+learning
 
 git add .
 git commit -m "Prepare for Heroku deployment"
